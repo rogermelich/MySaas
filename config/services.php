@@ -35,4 +35,10 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'github' => [
+        'client_id' => 'SOCIALITE_ID',
+        'client_secret' => 'SOCIALITE_SECRET',
+        'redirect' => 'SOCIALITE_URL',
+    ],
+
 ];

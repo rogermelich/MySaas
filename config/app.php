@@ -167,6 +167,9 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
          #llum_providers
 
+        #Socialite Service Provider
+        Laravel\Socialite\SocialiteServiceProvider::class,
+
     ],
 
     /*
@@ -219,6 +222,9 @@ return [
          * Acacha AdminLTE template alias
          */
         'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,
+
+        #Socialite
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
 

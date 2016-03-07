@@ -28,4 +28,15 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['web']], function () {
     //
+    Route::get('auth/github', 'Auth\AuthController@redirectToGithubProvider');
+    Route::get('auth/github/callblack', 'Auth\AuthController@hantleGithubProviderCallBlack');
+    Route::get('auth/facebook', 'Auth\AuthController@hantleFacebookProvider');
+    Route::get('auth/facebook/callblack', 'Auth\AuthController@redirectToFacebookProviderCallBlack');
+    Route::get('auth/google', 'Auth\AuthController@hantleGoogleProvider');
+    Route::get('auth/google/callblack', 'Auth\AuthController@redirectToGoogleProviderCallBlack');
 });
+
+Route::get('/csstransitions', function () {
+    return view('tinkerin.csstransitions');
+});
+
