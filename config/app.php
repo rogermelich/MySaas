@@ -170,6 +170,9 @@ return [
         #Socialite Service Provider
         Laravel\Socialite\SocialiteServiceProvider::class,
 
+        #Cashier Service Provider
+        Laravel\Cashier\CashierServiceProvider::class,
+
     ],
 
     /*

@@ -31,6 +31,14 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider');
     Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
 
+    Route::get('/plans', 'PlansController@index');
+
+    Route::get('/register_subcription', function () {
+        return view('auth.register_subscription');
+    });
+
+    Route::get('/subscription_payment', 'SubscriptionController@PaySubscribe');
+
 //    Route::get('auth/github', 'Auth\AuthController@redirectToGithubProvider');
 //    Route::get('auth/github/callblack', 'Auth\AuthController@hantleGithubProviderCallBlack');
 //
