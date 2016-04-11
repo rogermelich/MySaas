@@ -93,7 +93,8 @@
 									   // this value is set to false if the browser can't display the preview
 		preview_container      = $('#pdf_preview'),
 		update_preview		   = $('#flyer_update_preview'),
-		update_preview_button  = $('#flyer_preview_btn')
+		update_preview_button  = $('#flyer_preview_btn'),
+		flyer_download_btn	   = $('#flyer_download_btn')
 	;
 
 	// preview can be displayed?
@@ -180,6 +181,7 @@
 
 			// temporary disabling buttons while parsing image
 			update_preview_button.prop('disabled', true);
+			var download_button;
 			download_button.prop('disabled', true);
 
 			/*
@@ -231,29 +233,32 @@
 			_y = page_margin; // vertical starting point
 
 			// form data
-			var flyer_title             = $('#flyer-title').val(),
-				flyer_title_size        = $('#flyer-title-size').val(),
-				flyer_title_color       = $('#flyer-title-color').val(),
-				flyer_description       = $('#flyer-description').val(),
-				flyer_price             = $('#flyer-price').val(),
-				flyer_price_currency    = $('#flyer-price-currency').val(),
-				flyer_price_color       = $('#flyer-price-color').val()
+			var Client_Name             = $('#Client_Name').val(),
+				Client_Direction        = $('#Client_Direction').val(),
+				NIF_CIF     			= $('#NIF_CIF').val(),
+				Num_Invoice       		= $('#Num_Invoice').val(),
+				Date_Invoice            = $('#Date_Invoice').val(),
+				Valid_Invoice    		= $('#Valid_Invoice').val(),
+				Date_Item       		= $('#Date_Item').val(),
+				Price_Currency          = $('#Price_Currency').val(),
+				Price		    		= $('#Price').val(),
+				Description       		= $('#Description').val()
 			;
 
 
 			var pdf = new jsPDF('p', 'mm', page_size),
-				text_baseline,
+				text_baseline
 
 				// some colors:
-				light_grey = 237,
-				grey       = 128,
-				black      = 0,
-				white 	   = 255
+				// light_grey = 237,
+				// grey       = 128,
+				// black      = 0,
+				// white 	   = 255
 			;
 
 			// Optional - set properties of the document
 			pdf.setProperties({
-				title   : flyer_title,
+				title   : Client_Name,
 				subject : footer,
 				author  : 'me',
 				creator : 'Flyer Builder & jsPDF'
@@ -269,83 +274,86 @@
 
 
 			// !main title
-			color_array = hex2rgb(flyer_title_color);
-			pdf.setTextColor(color_array.red, color_array.green, color_array.blue);
-
+			//color_array = hex2rgb(flyer_title_color);
+			//pdf.setTextColor(color_array.red, color_array.green, color_array.blue);
+			var flyer_title_size = "12";
 			pdf.setFontSize(flyer_title_size);
 
-			lineHeight = px2mm(pdf.getLineHeight(flyer_title));
+			lineHeight = px2mm(pdf.getLineHeight(Client_Name));
 
 			_y += (logo_sizes.h + vspace + lineHeight);
 
-			pdf.textAlign(flyer_title, {align: "center"}, 0, _y);
+			pdf.textAlign(Client_Name, {align: "left"}, 0, _y);
+			pdf.textAlign(Client_Direction, {align: "left"}, 0, _y);
+			pdf.textAlign(NIF_CIF, {align: "left"}, 0, _y);
 
 			_y += vspace;
 
 			// !user image
-			if(img_data) {
-				var img_sizes = imgSizes (img_data.w, img_data.h, content_width);
-				pdf.addImage(img_data.src, img_data.type, img_sizes.centered_x, _y, img_sizes.w, img_sizes.h);
-				_y += img_sizes.h;
-
-			} else {
-				// if we haven't an image, a grey box with a text is added
-
-				var box_height = 80;
-
-				pdf.setFillColor(light_grey);
-				pdf.roundedRect(page_margin, _y, content_width, box_height, 5, 5, 'F');
-				pdf.setFontSize(60);
-				pdf.setTextColor(white);
-				_string = 'SPECIAL OFFER';
-				lineHeight = px2mm(pdf.getLineHeight(_string));
-
-				// y_correction: value to be added to y coord of the grey box to have text vertically centered
-				// it is empirically calculated adding 1/3 of text line height to half box height
-				y_correction = box_height/2 + lineHeight/3;
-
-				pdf.textAlign(_string, {align: "center"}, 0, _y + y_correction );
-
-				_y += box_height;
-			}
+			// if(img_data) {
+			// 	var img_sizes = imgSizes (img_data.w, img_data.h, content_width);
+			// 	pdf.addImage(img_data.src, img_data.type, img_sizes.centered_x, _y, img_sizes.w, img_sizes.h);
+			// 	_y += img_sizes.h;
+            //
+			// } else {
+			// 	// if we haven't an image, a grey box with a text is added
+            //
+			// 	// var box_height = 80;
+             //    //
+			// 	// //pdf.setFillColor(light_grey);
+			// 	// pdf.roundedRect(page_margin, _y, content_width, box_height, 5, 5, 'F');
+			// 	// pdf.setFontSize(60);
+			// 	// pdf.setTextColor(white);
+			// 	// _string = 'SPECIAL OFFER';
+			// 	// lineHeight = px2mm(pdf.getLineHeight(_string));
+            //
+			// 	// y_correction: value to be added to y coord of the grey box to have text vertically centered
+			// 	// it is empirically calculated adding 1/3 of text line height to half box height
+			// 	//y_correction = box_height/2 + lineHeight/3;
+            //
+			// 	//pdf.textAlign(_string, {align: "center"}, 0, _y + y_correction );
+            //
+			// 	//_y += box_height;
+			// }
 
 			// !price
 			// first: creating a circle that overlaps the bottom side of the image
-			var circle_radius = 30;
-			color_array = hex2rgb(flyer_price_color);
-			pdf.setFillColor(color_array.red, color_array.green, color_array.blue);
+			// var circle_radius = 30;
+			// color_array = hex2rgb(flyer_price_color);
+			// pdf.setFillColor(color_array.red, color_array.green, color_array.blue);
 
 			// _x and _y refer to center of the circle
-			_x = content_width - circle_radius;      // circle ends at `page_margin` millimeters from the image right side
+			//_x = content_width - circle_radius;      // circle ends at `page_margin` millimeters from the image right side
 
-			pdf.circle( _x, _y, circle_radius, 'F'); // circle overlaps image for 1/2 of its height
-
-			pdf.setFontSize(60);
-			pdf.setFont("times");
-			pdf.setFontType("bold");
-
-			_string = flyer_price_currency + parseInt(flyer_price); // decimals are removed
-
-			lineHeight = px2mm(pdf.getLineHeight(_string));
-			y_correction = lineHeight/3;
-
-			pdf.setTextColor(white);
-			pdf.textAlign(_string, {align: "centerAtX"}, _x, _y + y_correction );
-
+			// pdf.circle( _x, _y, circle_radius, 'F'); // circle overlaps image for 1/2 of its height
+            //
+			// pdf.setFontSize(60);
+			// pdf.setFont("times");
+			// pdf.setFontType("bold");
+            //
+			// _string = flyer_price_currency + parseInt(flyer_price); // decimals are removed
+            //
+			// lineHeight = px2mm(pdf.getLineHeight(_string));
+			// y_correction = lineHeight/3;
+            //
+			// pdf.setTextColor(white);
+			// pdf.textAlign(_string, {align: "centerAtX"}, _x, _y + y_correction );
+            //
 
 			// !description
-			if(flyer_description) {
+			if(Client_Name) {
 				pdf.setFontSize(20);
 				pdf.setFont("helvetica");
 				pdf.setFontType("italic");
-				pdf.setTextColor(grey);
+				//pdf.setTextColor("");
 
-				var lineWidth = content_width - (circle_radius * 2) - (page_margin * 2);
+				//var lineWidth = content_width - (circle_radius * 2) - (page_margin * 2);
+				var lineWidth = content_width - (page_margin * 2);
 				_y += page_margin;
 
 				var line_height = 12; // mm
 
-				var description_lines = pdf.splitTextToSize(flyer_description, lineWidth);
+				var description_lines = pdf.splitTextToSize(Description, lineWidth);
 				//pdf.text(page_margin, _y, description_lines); // doesn't allows to change line spacing
 
 				for (var i = 0 ; i < description_lines.length ; i++ ) {
@@ -360,7 +368,7 @@
 			_y = 287;
 			pdf.setFontSize(9);
 			pdf.setFontType("normal");
-			pdf.setTextColor(black);
+			//pdf.setTextColor(black);
 			pdf.textAlign(footer, {align: "center"}, 0, _y);
 
 
@@ -382,14 +390,9 @@
 		update_preview.keypress(function () {
 			createPDF(true)
 		});
-
-		update_preview.mouseclick(function () {
-			createPDF(true);
-		});
 	} catch (e) {
 		console.log(e);
 	}
-routes
 })();
 
 

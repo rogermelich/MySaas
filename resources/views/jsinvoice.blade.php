@@ -20,70 +20,91 @@
             </div>
 
             <div class="row">
-                <div class="col-sm-7">
+                <div class="col-sm-8">
                     <div class="form-group">
-                        <label for="flyer-title" class="control-label">Cliente</label>
-                        <input required="" class="form-control" id="flyer-title" placeholder="Main title"
+                        <label for="Client_Name" class="control-label">Nom Client:</label>
+                        <input required="" class="form-control" id="Client_Name" placeholder="Main title"
+                               value="Really incredible!!" maxlength="255" type="text" tabindex="2">
+                        <label for="Client_Direction" class="control-label">Direcció:</label>
+                        <input required="" class="form-control" id="Client_Direction" placeholder="Main title"
+                               value="Really incredible!!" maxlength="255" type="text" tabindex="2">
+                        <label for="NIF_CIF" class="control-label">NIF/CIF:</label>
+                        <input required="" class="form-control" id="NIF_CIF" placeholder="Main title"
                                value="Really incredible!!" maxlength="255" type="text" tabindex="2">
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="flyer-title-size" class="control-label">Size (pt)</label>
-                        <input required="" class="form-control" id="flyer-title-size" value="10" min="1" step="1"
+                        <label for="Num_Invoice" class="control-label">Numero Factura:</label>
+                        <input required="" class="form-control" id="Num_Invoice" value="10" min="1" step="1"
+                               type="number" tabindex="3" title="Title size: tune it to fit the available space">
+                        <label for="Date_Invoice" class="control-label">Data Factura:</label>
+                        <input required="" class="form-control" id="Date_Invoice" value="10" min="1" step="1"
+                               type="number" tabindex="3" title="Title size: tune it to fit the available space">
+                        <label for="Valid_Invoice" class="control-label">Factura Vàlida Fins:</label>
+                        <input required="" class="form-control" id="Valid_Invoice" value="10" min="1" step="1"
                                type="number" tabindex="3" title="Title size: tune it to fit the available space">
                     </div>
                 </div>
-                <div class="col-sm-2">
-                    <div class="form-group">
-                        <label for="flyer-title-color" class="control-label">Color</label>
-                        <input required="" class="form-control" id="flyer-title-color" value="#0080FF" type="color"
-                               tabindex="4" title="Title color">
-                    </div>
+                {{--<div class="col-sm-3">--}}
+                    {{--<div class="form-group">--}}
+                        {{--<label for="flyer-title-size" class="control-label">Size (pt)</label>--}}
+                        {{--<input required="" class="form-control" id="flyer-title-size" value="10" min="1" step="1"--}}
+                               {{--type="number" tabindex="3" title="Title size: tune it to fit the available space">--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="col-sm-2">--}}
+                    {{--<div class="form-group">--}}
+                        {{--<label for="flyer-title-color" class="control-label">Color</label>--}}
+                        {{--<input required="" class="form-control" id="flyer-title-color" value="#0080FF" type="color"--}}
+                               {{--tabindex="4" title="Title color">--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            <div class="col-sm-4">
+                <div class="form-group">
+                <label for="Date_Item" class="control-label">Data:</label>
+                <input required="" class="form-control" id="Date_Item"
+                       maxlength="255" type="text" tabindex="2">
                 </div>
             </div>
-
-            <div class="form-group">
-                <label class="control-label" for="flyer-description">Description</label>
-                <textarea class="form-control" id="flyer-description"
-                          placeholder="Insert a short description taking care of the available space"
-                          style="margin: 0px -11px 0px 0px; height: 122px; width: 665px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, nihil officia neque ad expedita consequatur quae! Voluptate, incidunt, earum, sit, eveniet harum ratione expedita quibusdam possimus sed laboriosam dolore ut recusandae eos. Ipsa, natus pariatur iste dolorum optio nostrum consectetur!</textarea>
-            </div>
-
-            <div class="row">
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="flyer-price" class="control-label">Price</label>
-                        <input required="" class="form-control" id="flyer-price"
-                               placeholder="Enter price (w/o decimals)" value="100" type="number" tabindex="5"
-                               step="any" min="0">
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label for="flyer-price-currency" class="control-label">Currency</label>
-                        <select required="" class="form-control" id="flyer-price-currency" tabindex="6">
+                        <label for="Price_Currency" class="control-label">Moneda</label>
+                        <select required="" class="form-control" id="Price_Currency" tabindex="6">
                             <option value="€">€</option>
                             <option value="$">$</option>
                             <option value="£">£</option>
                         </select>
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="flyer-price-color" class="control-label">Color</label>
-                        <input required="" class="form-control" id="flyer-price-color" value="#cc0000" type="color"
-                               tabindex="8" title="Price color">
+                        <label for="Price" class="control-label">Precio</label>
+                        <input required="" class="form-control" id="Price"
+                               placeholder="Enter price (w/o decimals)" value="100" type="number" tabindex="5"
+                               step="any" min="0">
                     </div>
                 </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="Description">Descripción</label>
+                <textarea class="form-control" id="Description"
+                          placeholder="Insert a short description taking care of the available space"
+                          style="margin: 0px -11px 0px 0px; height: 122px; width: 665px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, nihil officia neque ad expedita consequatur quae! Voluptate, incidunt, earum, sit, eveniet harum ratione expedita quibusdam possimus sed laboriosam dolore ut recusandae eos. Ipsa, natus pariatur iste dolorum optio nostrum consectetur!</textarea>
             </div>
             <hr>
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
                         <button id="flyer_preview_btn" type="button" class="btn btn-primary btn-block" tabindex="9">
-                            Update preview
+                            Afegir un altre Item
                         </button>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <input required="" class="form-control" id="flyer-title-size" value="10" min="1" step="1"
+                       type="number" tabindex="3" title="Title size: tune it to fit the available space">
                     </div>
                 </div>
                 <div class="col-sm-6">
