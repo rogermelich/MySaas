@@ -3,26 +3,26 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>Flyer builder</title>
+    <title>Factura</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset("css/flyer_builder.css")}}" type="text/css" media="all">
 </head>
 <body>
 <div class="container-fluid flyer-builder">
-    <h1>Flyer Builder</h1>
+        <h1>Factura</h1>
 
     <div id="flyer_update_preview" class="row">
         <div class="col-sm-6 loc_form">
 
             <div class="form-group">
-                <label for="flyer-images/" class="control-label">Image</label>
+                <label for="flyer-images/" class="control-label">Logo:</label>
                 <input id="flyer-image" type="file" tabindex="1">
             </div>
 
             <div class="row">
                 <div class="col-sm-7">
                     <div class="form-group">
-                        <label for="flyer-title" class="control-label">Title</label>
+                        <label for="flyer-title" class="control-label">Cliente</label>
                         <input required="" class="form-control" id="flyer-title" placeholder="Main title"
                                value="Really incredible!!" maxlength="255" type="text" tabindex="2">
                     </div>
@@ -30,7 +30,7 @@
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label for="flyer-title-size" class="control-label">Size (pt)</label>
-                        <input required="" class="form-control" id="flyer-title-size" value="60" min="1" step="1"
+                        <input required="" class="form-control" id="flyer-title-size" value="10" min="1" step="1"
                                type="number" tabindex="3" title="Title size: tune it to fit the available space">
                     </div>
                 </div>

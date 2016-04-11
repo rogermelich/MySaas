@@ -70,8 +70,8 @@
 			w  : 800,
 			h  : 285
 		},
-		agency_name      = 'Travel & Holidays',
-		agency_site_url  = 'www.travelandholidays.com',
+		agency_name      = 'Empresa',
+		agency_site_url  = 'localhost',
 		footer           = agency_name + ' - ' + agency_site_url,
 
 		page_size        = 'a4',
@@ -88,12 +88,12 @@
 
 
 	// some variables
-	var can_display_preview    = true, // if true a preview of the PDF can be displayed in the iframe,
+	//es canvia a false per a que s'actualitzi constant ment.
+	var can_display_preview    = false, // if true a preview of the PDF can be displayed in the iframe,
 									   // this value is set to false if the browser can't display the preview
 		preview_container      = $('#pdf_preview'),
 		update_preview		   = $('#flyer_update_preview'),
-		update_preview_button  = $('#flyer_preview_btn'),
-		download_button        = $('#flyer_download_btn')
+		update_preview_button  = $('#flyer_preview_btn')
 	;
 
 	// preview can be displayed?
@@ -386,12 +386,6 @@
 		update_preview.mouseclick(function () {
 			createPDF(true);
 		});
-
-
-		$('#flyer_download_btn').click(function () {
-			createPDF(false);
-		});
-
 	} catch (e) {
 		console.log(e);
 	}

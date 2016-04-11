@@ -27,6 +27,11 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
+    //Registrem un esdeveniment --> Forma senzilla
+    Event::listen('user.change',function(){
+        Cache::forget('query.users');
+    });
+    
     Route::get('users', 'UsersController@index');
 
     Route::post('users', 'UsersController@store');

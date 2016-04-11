@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Cache;
+use Event;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -27,13 +28,14 @@ class UsersController extends Controller
         return $users;
     }
 
+
+
+
     public function store()
     {
         User::create(['name' => 'Pepito','email' => 'pepito@pepito.com']);
 
-        //Amb el flush o cacheja tot, nosaltres sols volem el de usuers per la qual cosa farem el forget
-        //Cache::flush();
-        Cache::forget('query.users');
+        Event::fire('users.change');
     }
 
     public function update()
@@ -44,16 +46,14 @@ class UsersController extends Controller
 
         $user->save();
 
-        //Cache::flush();
-        Cache::forget('query.users');
+        Event::fire('users.change');
     }
 
     public function destroy($id)
     {
         User::destroy($id);
 
-        //Cache::flush();
-        Cache::forget('query.users');
+        Event::fire('users.change');
 
     }
 }
