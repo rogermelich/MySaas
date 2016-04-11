@@ -32,7 +32,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('Invoice', 'PDFController@invoicehtml');
     //jsPDF
     Route::get('jsPDFInvoice', 'jsPDFController@downloadInvoice');
-
+    Route::get('jsInvoice', 'jsPDFController@invoicehtml');
 
     Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider');
     Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
