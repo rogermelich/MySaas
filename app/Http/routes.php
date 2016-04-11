@@ -27,7 +27,12 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    Route::get('user', 'UsersController@index');
+    Route::get('users', 'UsersController@index');
+
+    Route::post('users', 'UsersController@store');
+    Route::put('users', 'UsersController@update');
+    Route::delete('users', 'UsersController@destroy');
+
     //
     Route::get('downloadInvoice', 'PDFController@downloadInvoice');
     Route::get('Invoice', 'PDFController@invoicehtml');
