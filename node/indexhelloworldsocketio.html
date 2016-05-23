@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Testing ...</h1>
+
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
+<script>
+    var socket = io('http://localhost:3000');
+
+    io.emit('hello');
+    io.emit('bye');
+    io.emit('buff');
+</script>
+</body>
+</html>
